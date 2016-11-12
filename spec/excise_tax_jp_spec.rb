@@ -28,7 +28,7 @@ describe ExciseTaxJp do
     describe "#with_excise_tax" do
       where(:integer, :date, :fraction, :amount) do
         [
-          # 8%
+          # 8% & floor
           [10,   Date.new(2016, 1, 1), nil, 10],
           [20,   Date.new(2016, 1, 1), nil, 21],
           [30,   Date.new(2016, 1, 1), nil, 32],
@@ -72,6 +72,51 @@ describe ExciseTaxJp do
           [198,  Date.new(2016, 1, 1), :ceil, 214],
           [0,    Date.new(2016, 1, 1), :ceil, 0],
           [-100, Date.new(2016, 1, 1), :ceil, -100],
+
+          # 5% & floor
+          [11,   Date.new(2014, 1, 1), nil, 11],
+          [21,   Date.new(2014, 1, 1), nil, 22],
+          [31,   Date.new(2014, 1, 1), nil, 32],
+          [41,   Date.new(2014, 1, 1), nil, 43],
+          [51,   Date.new(2014, 1, 1), nil, 53],
+          [61,   Date.new(2014, 1, 1), nil, 64],
+          [71,   Date.new(2014, 1, 1), nil, 74],
+          [81,   Date.new(2014, 1, 1), nil, 85],
+          [91,   Date.new(2014, 1, 1), nil, 95],
+          [101,  Date.new(2014, 1, 1), nil, 106],
+          [198,  Date.new(2014, 1, 1), nil, 207],
+          [0,    Date.new(2014, 1, 1), nil, 0],
+          [-100, Date.new(2014, 1, 1), nil, -100],
+
+          # 5% & round
+          [11,   Date.new(2014, 1, 1), :round, 12],
+          [21,   Date.new(2014, 1, 1), :round, 22],
+          [31,   Date.new(2014, 1, 1), :round, 33],
+          [41,   Date.new(2014, 1, 1), :round, 43],
+          [51,   Date.new(2014, 1, 1), :round, 54],
+          [61,   Date.new(2014, 1, 1), :round, 64],
+          [71,   Date.new(2014, 1, 1), :round, 75],
+          [81,   Date.new(2014, 1, 1), :round, 85],
+          [91,   Date.new(2014, 1, 1), :round, 96],
+          [101,  Date.new(2014, 1, 1), :round, 106],
+          [198,  Date.new(2014, 1, 1), :round, 208],
+          [0,    Date.new(2014, 1, 1), :round, 0],
+          [-100, Date.new(2014, 1, 1), :round, -100],
+
+          # 5% & ceil
+          [11,   Date.new(2014, 1, 1), :ceil, 12],
+          [21,   Date.new(2014, 1, 1), :ceil, 23],
+          [31,   Date.new(2014, 1, 1), :ceil, 33],
+          [41,   Date.new(2014, 1, 1), :ceil, 44],
+          [51,   Date.new(2014, 1, 1), :ceil, 54],
+          [61,   Date.new(2014, 1, 1), :ceil, 65],
+          [71,   Date.new(2014, 1, 1), :ceil, 75],
+          [81,   Date.new(2014, 1, 1), :ceil, 86],
+          [91,   Date.new(2014, 1, 1), :ceil, 96],
+          [101,  Date.new(2014, 1, 1), :ceil, 107],
+          [198,  Date.new(2014, 1, 1), :ceil, 208],
+          [0,    Date.new(2014, 1, 1), :ceil, 0],
+          [-100, Date.new(2014, 1, 1), :ceil, -100],
         ]
       end
 
