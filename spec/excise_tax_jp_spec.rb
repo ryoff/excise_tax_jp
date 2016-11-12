@@ -28,6 +28,7 @@ describe ExciseTaxJp do
     describe "#with_excise_tax" do
       where(:integer, :date, :fraction, :amount) do
         [
+          # 8%
           [10,   Date.new(2016, 1, 1), nil, 10],
           [20,   Date.new(2016, 1, 1), nil, 21],
           [30,   Date.new(2016, 1, 1), nil, 32],
@@ -41,6 +42,36 @@ describe ExciseTaxJp do
           [198,  Date.new(2016, 1, 1), nil, 213],
           [0,    Date.new(2016, 1, 1), nil, 0],
           [-100, Date.new(2016, 1, 1), nil, -100],
+
+          # %8 & round
+          [10,   Date.new(2016, 1, 1), :round, 11],
+          [20,   Date.new(2016, 1, 1), :round, 22],
+          [30,   Date.new(2016, 1, 1), :round, 32],
+          [40,   Date.new(2016, 1, 1), :round, 43],
+          [50,   Date.new(2016, 1, 1), :round, 54],
+          [60,   Date.new(2016, 1, 1), :round, 65],
+          [70,   Date.new(2016, 1, 1), :round, 76],
+          [80,   Date.new(2016, 1, 1), :round, 86],
+          [90,   Date.new(2016, 1, 1), :round, 97],
+          [100,  Date.new(2016, 1, 1), :round, 108],
+          [198,  Date.new(2016, 1, 1), :round, 214],
+          [0,    Date.new(2016, 1, 1), :round, 0],
+          [-100, Date.new(2016, 1, 1), :round, -100],
+
+          # %8 & ceil
+          [10,   Date.new(2016, 1, 1), :ceil, 11],
+          [20,   Date.new(2016, 1, 1), :ceil, 22],
+          [30,   Date.new(2016, 1, 1), :ceil, 33],
+          [40,   Date.new(2016, 1, 1), :ceil, 44],
+          [50,   Date.new(2016, 1, 1), :ceil, 54],
+          [60,   Date.new(2016, 1, 1), :ceil, 65],
+          [70,   Date.new(2016, 1, 1), :ceil, 76],
+          [80,   Date.new(2016, 1, 1), :ceil, 87],
+          [90,   Date.new(2016, 1, 1), :ceil, 98],
+          [100,  Date.new(2016, 1, 1), :ceil, 108],
+          [198,  Date.new(2016, 1, 1), :ceil, 214],
+          [0,    Date.new(2016, 1, 1), :ceil, 0],
+          [-100, Date.new(2016, 1, 1), :ceil, -100],
         ]
       end
 
