@@ -117,6 +117,51 @@ describe ExciseTaxJp do
           [198,  Date.new(2014, 1, 1), :ceil, 208],
           [0,    Date.new(2014, 1, 1), :ceil, 0],
           [-100, Date.new(2014, 1, 1), :ceil, -100],
+
+          # 3% & floor
+          [11,   Date.new(1997, 1, 1), nil, 11],
+          [21,   Date.new(1997, 1, 1), nil, 21],
+          [31,   Date.new(1997, 1, 1), nil, 31],
+          [41,   Date.new(1997, 1, 1), nil, 42],
+          [51,   Date.new(1997, 1, 1), nil, 52],
+          [61,   Date.new(1997, 1, 1), nil, 62],
+          [71,   Date.new(1997, 1, 1), nil, 73],
+          [81,   Date.new(1997, 1, 1), nil, 83],
+          [91,   Date.new(1997, 1, 1), nil, 93],
+          [101,  Date.new(1997, 1, 1), nil, 104],
+          [198,  Date.new(1997, 1, 1), nil, 203],
+          [0,    Date.new(1997, 1, 1), nil, 0],
+          [-100, Date.new(1997, 1, 1), nil, -100],
+
+          # 3% & round
+          [11,   Date.new(1997, 1, 1), :round, 11],
+          [21,   Date.new(1997, 1, 1), :round, 22],
+          [31,   Date.new(1997, 1, 1), :round, 32],
+          [41,   Date.new(1997, 1, 1), :round, 42],
+          [51,   Date.new(1997, 1, 1), :round, 53],
+          [61,   Date.new(1997, 1, 1), :round, 63],
+          [71,   Date.new(1997, 1, 1), :round, 73],
+          [81,   Date.new(1997, 1, 1), :round, 83],
+          [91,   Date.new(1997, 1, 1), :round, 94],
+          [101,  Date.new(1997, 1, 1), :round, 104],
+          [198,  Date.new(1997, 1, 1), :round, 204],
+          [0,    Date.new(1997, 1, 1), :round, 0],
+          [-100, Date.new(1997, 1, 1), :round, -100],
+
+          # 3% & ceil
+          [11,   Date.new(1997, 1, 1), :ceil, 12],
+          [21,   Date.new(1997, 1, 1), :ceil, 22],
+          [31,   Date.new(1997, 1, 1), :ceil, 32],
+          [41,   Date.new(1997, 1, 1), :ceil, 43],
+          [51,   Date.new(1997, 1, 1), :ceil, 53],
+          [61,   Date.new(1997, 1, 1), :ceil, 63],
+          [71,   Date.new(1997, 1, 1), :ceil, 74],
+          [81,   Date.new(1997, 1, 1), :ceil, 84],
+          [91,   Date.new(1997, 1, 1), :ceil, 94],
+          [101,  Date.new(1997, 1, 1), :ceil, 105],
+          [198,  Date.new(1997, 1, 1), :ceil, 204],
+          [0,    Date.new(1997, 1, 1), :ceil, 0],
+          [-100, Date.new(1997, 1, 1), :ceil, -100]
         ]
       end
 
