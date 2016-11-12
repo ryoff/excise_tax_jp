@@ -25,7 +25,7 @@ describe ExciseTaxJp do
   end
 
   describe Integer do
-    describe "#with_excise_tax" do
+    shared_examples_for 'with_excise_tax' do |subject_proc|
       where(:integer, :date, :fraction, :amount) do
         [
           # 8% & floor
@@ -166,7 +166,7 @@ describe ExciseTaxJp do
       end
 
       with_them do
-        subject { integer.with_excise_tax(args) }
+        subject { subject_proc.call(integer, args) }
 
         let(:args) do
           {}.tap do |o|
@@ -177,6 +177,14 @@ describe ExciseTaxJp do
 
         it { is_expected.to eq amount }
       end
+    end
+
+    describe "#with_excise_tax" do
+      it_behaves_like "with_excise_tax", lambda { |integer, args| integer.with_excise_tax(args) }
+    end
+
+    describe "#excise_tax!" do
+      it_behaves_like "with_excise_tax", lambda { |integer, args| integer.excise_tax(args) - integer }
     end
   end
 end
