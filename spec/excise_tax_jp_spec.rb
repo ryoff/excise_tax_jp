@@ -25,7 +25,7 @@ describe ExciseTaxJp do
   end
 
   describe Integer do
-    shared_examples_for 'with_excise_tax' do |subject_proc|
+    shared_examples_for 'Calculate Japanese excise tax' do |subject_proc|
       where(:integer, :date, :fraction, :amount) do
         [
           # 8% & floor
@@ -180,11 +180,11 @@ describe ExciseTaxJp do
     end
 
     describe "#with_excise_tax" do
-      it_behaves_like "with_excise_tax", lambda { |integer, args| integer.with_excise_tax(args) }
+      it_behaves_like "Calculate Japanese excise tax", lambda { |integer, args| integer.with_excise_tax(args) }
     end
 
     describe "#excise_tax" do
-      it_behaves_like "with_excise_tax", lambda { |integer, args| integer.excise_tax(args) + integer }
+      it_behaves_like "Calculate Japanese excise tax", lambda { |integer, args| integer.excise_tax(args) + integer }
     end
   end
 end
