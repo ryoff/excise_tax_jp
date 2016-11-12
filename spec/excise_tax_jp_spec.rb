@@ -183,7 +183,7 @@ describe ExciseTaxJp do
       it_behaves_like "with_excise_tax", lambda { |integer, args| integer.with_excise_tax(args) }
     end
 
-    describe "#excise_tax!" do
+    describe "#excise_tax" do
       it_behaves_like "with_excise_tax", lambda { |integer, args| integer.excise_tax(args) - integer }
     end
   end
