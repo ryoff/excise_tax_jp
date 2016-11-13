@@ -202,4 +202,7 @@ describe ExciseTaxJp do
       end
     end
   end
+
+  describe BigDecimal do
+  end
 end

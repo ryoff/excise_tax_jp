@@ -2,6 +2,7 @@ require "bigdecimal"
 require 'active_support'
 require "excise_tax_jp/version"
 require "excise_tax_jp/core_ext/integer"
+require "excise_tax_jp/core_ext/bigdecimal"
 
 module ExciseTaxJp
   RATE103 = BigDecimal("1.03").freeze
