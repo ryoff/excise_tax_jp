@@ -1,8 +1,6 @@
 # ExciseTaxJp
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/excise_tax_jp`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+日本の消費税計算gem
 
 ## Installation
 
@@ -22,7 +20,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+# latest japanese excise tax rate
+ExciseTaxJp.excise_tax_rate # => #<BigDecimal:7f9b84ab6cc0,'0.108E1',18(18)>
+198.with_excise_tax         # => 213
+198.excise_tax              # => 15
+
+# using old rate (default: Date.current)
+ExciseTaxJp.excise_tax_rate(date: Date.new(1997, 1, 1)) # => #<BigDecimal:7f9b84ab6e28,'0.103E1',18(18)>
+198.with_excise_tax(date: Date.new(1997, 1, 1))         # => 203
+198.excise_tax(date: Date.new(1997, 1, 1))              # => 5
+
+# using rounding (default: :floor)
+198.excise_tax                   # => 15
+198.excise_tax(fraction: :round) # => 16
+198.excise_tax(fraction: :ceil)  # => 16
+
+# big decimal
+BigDecimal("10000000000000").with_excise_tax # => 10800000000000
+BigDecimal("10000000000000").excise_tax      # => #<BigDecimal:7f9b842ee740,'0.8E12',9(18)>
+```
 
 ## Development
 
