@@ -210,20 +210,73 @@ describe ExciseTaxJp do
         [BigDecimal.new("100000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("108000000000000")],
         [BigDecimal.new("198000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("213840000000000")],
         [BigDecimal.new("10.1"),            Date.new(2016, 1, 1), nil, BigDecimal.new("10")],
-        # 10.908
         [BigDecimal.new("90.9"),            Date.new(2016, 1, 1), nil, BigDecimal.new("98")],
-        # 98.172
         [BigDecimal.new("0"),               Date.new(2016, 1, 1), nil, BigDecimal.new("0")],
         [BigDecimal.new("-10000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("-10000000000000")],
 
         # # %8 & round
+        [BigDecimal.new("100000000000000"), Date.new(2016, 1, 1), :round, BigDecimal.new("108000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2016, 1, 1), :round, BigDecimal.new("213840000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2016, 1, 1), :round, BigDecimal.new("11")],
+        [BigDecimal.new("90.9"),            Date.new(2016, 1, 1), :round, BigDecimal.new("98")],
+        [BigDecimal.new("0"),               Date.new(2016, 1, 1), :round, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2016, 1, 1), :round, BigDecimal.new("-10000000000000")],
+
         # # %8 & ceil
+        [BigDecimal.new("100000000000000"), Date.new(2016, 1, 1), :ceil, BigDecimal.new("108000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2016, 1, 1), :ceil, BigDecimal.new("213840000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2016, 1, 1), :ceil, BigDecimal.new("11")],
+        [BigDecimal.new("90.9"),            Date.new(2016, 1, 1), :ceil, BigDecimal.new("99")],
+        [BigDecimal.new("0"),               Date.new(2016, 1, 1), :ceil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2016, 1, 1), :ceil, BigDecimal.new("-10000000000000")],
+
         # # 5% & floor
+        [BigDecimal.new("100000000000000"), Date.new(2014, 1, 1), nil, BigDecimal.new("105000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2014, 1, 1), nil, BigDecimal.new("207900000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2014, 1, 1), nil, BigDecimal.new("10")],
+        [BigDecimal.new("90.9"),            Date.new(2014, 1, 1), nil, BigDecimal.new("95")],
+        [BigDecimal.new("0"),               Date.new(2014, 1, 1), nil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2014, 1, 1), nil, BigDecimal.new("-10000000000000")],
+
         # # 5% & round
+        [BigDecimal.new("100000000000000"), Date.new(2014, 1, 1), :round, BigDecimal.new("105000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2014, 1, 1), :round, BigDecimal.new("207900000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2014, 1, 1), :round, BigDecimal.new("11")],
+        [BigDecimal.new("90.9"),            Date.new(2014, 1, 1), :round, BigDecimal.new("95")],
+        [BigDecimal.new("0"),               Date.new(2014, 1, 1), :round, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2014, 1, 1), :round, BigDecimal.new("-10000000000000")],
+
         # # 5% & ceil
+        [BigDecimal.new("100000000000000"), Date.new(2014, 1, 1), :ceil, BigDecimal.new("105000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2014, 1, 1), :ceil, BigDecimal.new("207900000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2014, 1, 1), :ceil, BigDecimal.new("11")],
+        [BigDecimal.new("90.9"),            Date.new(2014, 1, 1), :ceil, BigDecimal.new("96")],
+        [BigDecimal.new("0"),               Date.new(2014, 1, 1), :ceil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2014, 1, 1), :ceil, BigDecimal.new("-10000000000000")],
+
         # # 3% & floor
+        [BigDecimal.new("100000000000000"), Date.new(1997, 1, 1), nil, BigDecimal.new("103000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(1997, 1, 1), nil, BigDecimal.new("203940000000000")],
+        [BigDecimal.new("10.1"),            Date.new(1997, 1, 1), nil, BigDecimal.new("10")],
+        [BigDecimal.new("90.9"),            Date.new(1997, 1, 1), nil, BigDecimal.new("93")],
+        [BigDecimal.new("0"),               Date.new(1997, 1, 1), nil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(1997, 1, 1), nil, BigDecimal.new("-10000000000000")],
+
         # # 3% & round
+        [BigDecimal.new("100000000000000"), Date.new(1997, 1, 1), :round, BigDecimal.new("103000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(1997, 1, 1), :round, BigDecimal.new("203940000000000")],
+        [BigDecimal.new("10.1"),            Date.new(1997, 1, 1), :round, BigDecimal.new("10")],
+        [BigDecimal.new("90.9"),            Date.new(1997, 1, 1), :round, BigDecimal.new("94")],
+        [BigDecimal.new("0"),               Date.new(1997, 1, 1), :round, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(1997, 1, 1), :round, BigDecimal.new("-10000000000000")],
+
         # # 3% & ceil
+        [BigDecimal.new("100000000000000"), Date.new(1997, 1, 1), :ceil, BigDecimal.new("103000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(1997, 1, 1), :ceil, BigDecimal.new("203940000000000")],
+        [BigDecimal.new("10.1"),            Date.new(1997, 1, 1), :ceil, BigDecimal.new("11")],
+        [BigDecimal.new("90.9"),            Date.new(1997, 1, 1), :ceil, BigDecimal.new("94")],
+        [BigDecimal.new("0"),               Date.new(1997, 1, 1), :ceil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(1997, 1, 1), :ceil, BigDecimal.new("-10000000000000")]
       ]
     end
 
