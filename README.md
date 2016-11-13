@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 # latest japanese excise tax rate
 ExciseTaxJp.excise_tax_rate # => #<BigDecimal:7f9b84ab6cc0,'0.108E1',18(18)>
 198.with_excise_tax         # => 213
