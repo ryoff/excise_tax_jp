@@ -204,5 +204,65 @@ describe ExciseTaxJp do
   end
 
   describe BigDecimal do
+    def big_decimal_test_cases
+      [
+        # 8% & floor
+        [BigDecimal.new("100000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("108000000000000")],
+        [BigDecimal.new("198000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("213840000000000")],
+        [BigDecimal.new("10.1"),            Date.new(2016, 1, 1), nil, BigDecimal.new("10")],
+        # 10.908
+        [BigDecimal.new("90.9"),            Date.new(2016, 1, 1), nil, BigDecimal.new("98")],
+        # 98.172
+        [BigDecimal.new("0"),               Date.new(2016, 1, 1), nil, BigDecimal.new("0")],
+        [BigDecimal.new("-10000000000000"), Date.new(2016, 1, 1), nil, BigDecimal.new("-10000000000000")],
+
+        # # %8 & round
+        # # %8 & ceil
+        # # 5% & floor
+        # # 5% & round
+        # # 5% & ceil
+        # # 3% & floor
+        # # 3% & round
+        # # 3% & ceil
+      ]
+    end
+
+    describe "#with_excise_tax" do
+      where(:big_decimal, :date, :fraction, :amount) do
+        big_decimal_test_cases
+      end
+
+      with_them do
+        subject { big_decimal.with_excise_tax(args) }
+
+        let(:args) do
+          {}.tap do |o|
+            o[:date]     = date     if date
+            o[:fraction] = fraction if fraction
+          end
+        end
+
+        it { is_expected.to eq amount }
+      end
+    end
+
+    describe "#excise_tax" do
+      where(:big_decimal, :date, :fraction, :amount) do
+        big_decimal_test_cases
+      end
+
+      with_them do
+        subject { big_decimal.excise_tax(args) }
+
+        let(:args) do
+          {}.tap do |o|
+            o[:date]     = date     if date
+            o[:fraction] = fraction if fraction
+          end
+        end
+
+        it { is_expected.to eq amount - big_decimal }
+      end
+    end
   end
 end
