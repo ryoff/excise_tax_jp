@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ryoff"]
   spec.email         = ["ryoffes@gmail.com"]
 
-  spec.summary       = %q{Calculate japanese excise tax.}
-  spec.description   = %q{Calculate japanese excise tax.}
+  spec.summary       = %q{Japanese excise tax calculator.}
+  spec.description   = %q{Japanese excise tax calculator.}
   spec.homepage      = "https://github.com/ryoff/excise_tax_jp"
   spec.license       = "MIT"
 
