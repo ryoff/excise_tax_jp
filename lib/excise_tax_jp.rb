@@ -1,5 +1,4 @@
 require "bigdecimal"
-require 'active_support'
 require "excise_tax_jp/version"
 require "excise_tax_jp/core_ext/integer"
 require "excise_tax_jp/core_ext/bigdecimal"
@@ -10,7 +9,7 @@ module ExciseTaxJp
   RATE108 = BigDecimal("1.08").freeze
 
   class << self
-    def excise_tax_rate(date: Date.current)
+    def excise_tax_rate(date: Date.today)
       # https://github.com/ruby/ruby/commit/337a3da71cd3c7e98d9c11b1f58e53049489dacf
       if (Date.new(1989, 4, 1)..Date.new(1997, 3, 31)).cover?(date)
         ExciseTaxJp::RATE103

@@ -26,7 +26,7 @@ ExciseTaxJp.excise_tax_rate # => #<BigDecimal:7f9b84ab6cc0,'0.108E1',18(18)>
 198.with_excise_tax         # => 213
 198.excise_tax              # => 15
 
-# using old rate (default: Date.current)
+# using old rate (default: Date.today)
 ExciseTaxJp.excise_tax_rate(date: Date.new(1997, 1, 1)) # => #<BigDecimal:7f9b84ab6e28,'0.103E1',18(18)>
 198.with_excise_tax(date: Date.new(1997, 1, 1))         # => 203
 198.excise_tax(date: Date.new(1997, 1, 1))              # => 5
