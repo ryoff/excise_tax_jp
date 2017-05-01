@@ -1,4 +1,5 @@
 require "bigdecimal"
+require "date"
 require "excise_tax_jp/version"
 require "excise_tax_jp/core_ext/integer"
 require "excise_tax_jp/core_ext/bigdecimal"
