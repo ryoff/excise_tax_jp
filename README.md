@@ -2,6 +2,8 @@
 
 日本の消費税計算gem
 
+[![Build Status](https://travis-ci.org/ryoff/excise_tax_jp.svg?branch=master)](https://travis-ci.org/ryoff/excise_tax_jp)
+
 ## Installation
 
 Add this line to your application's Gemfile:
